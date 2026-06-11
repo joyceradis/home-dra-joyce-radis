@@ -1,0 +1,649 @@
+/* Importação de fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Estilos globais e resets (mantidos do seu site original ou padrões) */
+:root {
+  --bg: #f5efe7;
+  --surface: rgba(255, 255, 255, .62);
+  --card: rgba(255, 255, 255, .76);
+  --card-strong: rgba(255, 251, 246, .88);
+  --deep: #43352f;
+  --deep-2: #634f46;
+  --deep-3: #7a6458;
+  --text: #241f1c;
+  --muted: #70655f;
+  --line: rgba(184, 162, 143, .42);
+  --line-strong: rgba(184, 162, 143, .62);
+  --accent: #d8c1a6;
+  --accent-2: #efe1d0;
+  --white: #ffffff;
+  --radius: 30px;
+  --radius-lg: 36px;
+  --shadow: 0 24px 70px rgba(67, 53, 47, .10), 0 2px 0 rgba(255, 255, 255, .48) inset;
+  --shadow-hover: 0 34px 100px rgba(67, 53, 47, .16), 0 2px 0 rgba(255, 255, 255, .56) inset;
+  --shadow-soft: 0 18px 44px rgba(67, 53, 47, .08);
+  --transition: all .45s cubic-bezier(.22, 1, .36, 1);
+
+  /* Cores adaptadas para a nova hero section */
+  --color-primary: var(--deep); /* Usando sua cor deep como primária */
+  --color-secondary: var(--muted); /* Usando sua cor muted como secundária */
+  --color-text-dark: var(--text);
+  --color-text-light: var(--muted);
+  --color-background-light: var(--bg); /* Usando sua cor bg como fundo claro */
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+html {
+  scroll-padding-top: 110px;
+}
+
+body {
+  position: relative;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 12% 10%, rgba(216, 193, 166, .26), transparent 0 24%),
+    radial-gradient(circle at 88% 14%, rgba(255, 255, 255, .84), transparent 0 20%),
+    radial-gradient(circle at 80% 78%, rgba(214, 197, 180, .18), transparent 0 24%),
+    linear-gradient(180deg, #f8f3ed 0%, #f2ebe2 48%, #ede4da 100%);
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-text-dark);
+  line-height: 1.6;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  width: 32vw;
+  height: 32vw;
+  border-radius: 999px;
+  filter: blur(90px);
+  opacity: .35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::before {
+  top: -10vw;
+  left: -8vw;
+  background: rgba(214, 192, 165, .42);
+}
+
+body::after {
+  right: -10vw;
+  bottom: -10vw;
+  background: rgba(255, 255, 255, .62);
+}
+
+.header,
+main,
+.footer,
+.thankyou-wrap {
+  position: relative;
+  z-index: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 58px 0; /* Ajustado para seu valor original */
+}
+
+/* Estilos do cabeçalho (header) */
+.header {
+  padding: 14px 0;
+  background: rgba(248, 243, 237, .72);
+  border-bottom: 1px solid rgba(184, 162, 143, .18);
+  box-shadow: 0 8px 30px rgba(67, 53, 47, .05);
+}
+
+.header.scrolled {
+  background: rgba(248, 243, 237, .88);
+  border-bottom-color: rgba(184, 162, 143, .34);
+  box-shadow: 0 18px 42px rgba(67, 53, 47, .10);
+}
+
+.nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--deep);
+    gap: 16px;
+    transition: transform .35s ease;
+}
+
+.brand:hover {
+  transform: translateY(-1px);
+}
+
+.monogram {
+    font-family: var(--font-heading);
+    font-size: 2.2em;
+    font-weight: 600;
+    color: var(--deep);
+    text-shadow: 0 10px 25px rgba(67, 53, 47, .10);
+}
+
+.brand-copy strong {
+    display: block;
+    font-size: 1.1em;
+    letter-spacing: .06em;
+}
+
+.brand-copy span {
+    display: block;
+    font-size: 0.8em;
+    color: var(--muted);
+    max-width: 42ch;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px; /* Aumentado o espaçamento para mais arejado */
+}
+
+.nav-links a {
+    position: relative;
+    padding: 8px 0;
+    letter-spacing: .04em;
+    color: var(--muted);
+    font-size: 14px; /* Ajustado para um tamanho mais comum */
+    transition: color .35s ease;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--deep), transparent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .35s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.is-active {
+  color: var(--deep);
+}
+
+.nav-links a:hover::after,
+.nav-links a.is-active::after {
+  transform: scaleX(1);
+}
+
+/* Estilos da nova Hero Section (Seção Principal) */
+.hero-section {
+    padding: 80px 0;
+    background: transparent; /* Já tem o gradiente no body */
+    text-align: center;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column; /* Padrão para mobile: empilhado */
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.hero-image {
+    width: 280px; /* Tamanho fixo para a imagem em mobile */
+    height: 280px;
+    border-radius: 50%; /* Transforma a imagem em círculo */
+    object-fit: cover; /* Garante que a imagem preencha o círculo sem distorcer */
+    box-shadow: var(--shadow-soft); /* Sombra suave para dar profundidade */
+    margin-bottom: 30px; /* Espaçamento abaixo da imagem em mobile */
+}
+
+.hero-text {
+    max-width: 700px;
+    text-align: center;
+}
+
+.hero-text h1 {
+    font-family: var(--font-heading);
+    font-size: 2.8em;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    color: var(--deep);
+}
+
+.hero-text p {
+    font-family: var(--font-body);
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: var(--muted);
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1em;
+    text-decoration: none;
+    transition: var(--transition);
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.primary-btn {
+    background-color: var(--deep);
+    color: var(--white);
+    box-shadow: var(--shadow-soft);
+}
+
+.primary-btn:hover {
+    background-color: var(--deep-2);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+}
+
+.secondary-btn {
+    background-color: transparent;
+    color: var(--deep);
+    border-color: var(--deep);
+}
+
+.secondary-btn:hover {
+    background-color: var(--deep);
+    color: var(--white);
+    box-shadow: var(--shadow-soft);
+    transform: translateY(-2px);
+}
+
+/* Estilos para as cards de portal (Pacientes e Advogados) */
+.minimal-portal-section {
+    padding-top: 4px; /* Mantido do seu original */
+}
+
+.refined-portal-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Padrão para mobile: uma coluna */
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.refined-portal-card {
+    display: block;
+    padding: 34px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(145deg, rgba(255, 255, 255, .82), rgba(248, 240, 232, .68));
+    border: 1px solid rgba(184, 162, 143, .30);
+    box-shadow: var(--shadow);
+    transition: transform .55s cubic-bezier(.22, 1, .36, 1), box-shadow .55s cubic-bezier(.22, 1, .36, 1), border-color .4s ease;
+    text-align: center; /* Centraliza o texto dos cards em mobile */
+}
+
+.refined-portal-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(154, 127, 103, .6);
+}
+
+.refined-portal-card .page-kicker {
+    font-family: var(--font-body);
+    font-size: 0.85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+}
+
+.refined-portal-card h2 {
+    font-family: var(--font-heading);
+    font-size: 2.2em;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    color: var(--deep);
+}
+
+.refined-portal-card p {
+    font-family: var(--font-body);
+    font-size: 1em;
+    line-height: 1.6;
+    color: var(--muted);
+    margin-bottom: 20px;
+    max-width: 45ch; /* Limita a largura do parágrafo para melhor leitura */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Estilos do rodapé (footer) */
+.footer {
+    background: transparent;
+}
+
+.page-footer-card {
+    padding: 40px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(155deg, rgba(67, 53, 47, .98), rgba(93, 74, 64, .96));
+    box-shadow: 0 30px 100px rgba(67, 53, 47, .28);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column; /* Padrão para mobile: empilhado */
+    align-items: center;
+    text-align: center;
+}
+
+.page-footer-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(255, 255, 255, .10), transparent 32%);
+  pointer-events: none;
+}
+
+.page-footer-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.page-footer-mark {
+    font-family: var(--font-heading);
+    font-size: 3em;
+    font-weight: 600;
+    color: var(--accent); /* Usando sua cor accent */
+    text-shadow: 0 18px 32px rgba(0, 0, 0, .16);
+}
+
+.page-footer-copy strong {
+    display: block;
+    font-size: 1.3em;
+    margin-bottom: 5px;
+    color: var(--white); /* Ajustado para melhor contraste no footer escuro */
+}
+
+.page-footer-copy p {
+    font-size: 0.95em;
+    color: rgba(255,255,255,.8);
+    margin-bottom: 5px;
+    line-height: 1.7;
+}
+
+.page-footer-copy address a {
+    color: rgba(255,255,255,.8);
+    text-decoration: none;
+    line-height: 1.7;
+}
+
+.page-footer-copy address a:hover {
+    text-decoration: underline;
+}
+
+.page-footer-links a {
+    color: rgba(255,255,255,.8);
+    margin-right: 15px;
+    font-size: 0.9em;
+    line-height: 1.7;
+}
+
+.whatsapp-float {
+    position: fixed;
+    width: 62px; /* Ajustado para seu valor original */
+    height: 62px; /* Ajustado para seu valor original */
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 0 22px 48px rgba(37, 211, 102, .28); /* Ajustado para seu valor original */
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    animation: whatsappPulse 2.6s ease-in-out infinite; /* Adicionado sua animação */
+}
+
+.whatsapp-float::before {
+  content: '';
+  position: absolute;
+  inset: -7px;
+  border-radius: inherit;
+  border: 1px solid rgba(37, 211, 102, .28);
+  opacity: .5;
+}
+
+.whatsapp-float:hover {
+    background-color: #128c7e;
+}
+
+.whatsapp-float svg {
+    width: 30px;
+    height: 30px;
+    fill: white;
+}
+
+/* Animação do WhatsApp */
+@keyframes whatsappPulse {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-4px) scale(1.04);
+  }
+}
+
+/* Responsividade */
+@media (min-width: 768px) {
+    .hero-content {
+        flex-direction: row; /* Alinha imagem e texto lado a lado em telas maiores */
+        text-align: left; /* Alinha o texto à esquerda */
+    }
+
+    .hero-text {
+        text-align: left;
+    }
+
+    .hero-buttons {
+        justify-content: flex-start; /* Alinha os botões à esquerda */
+    }
+
+    .hero-image {
+        width: 350px; /* Tamanho maior para desktop */
+        height: 350px;
+        margin-right: 40px; /* Espaçamento à direita da imagem */
+        margin-bottom: 0; /* Remove margem inferior em telas maiores */
+    }
+
+    .refined-portal-grid {
+        grid-template-columns: 1fr 1fr; /* Duas colunas para as cards em desktop */
+        text-align: left; /* Alinha o texto à esquerda nos cards em desktop */
+    }
+
+    .refined-portal-card p {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .page-footer-card {
+        flex-direction: row; /* Alinha lado a lado no footer em telas maiores */
+        justify-content: space-between;
+    }
+
+    .page-footer-grid {
+        flex-wrap: nowrap;
+    }
+
+    .page-footer-mark {
+        font-size: 92px; /* Tamanho original para desktop */
+        text-align: center;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-text h1 {
+        font-size: 3.8em; /* Tamanho ainda maior para telas muito grandes */
+    }
+    .hero-text p {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 767px) {
+    .nav-inner {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .nav-links a {
+        margin-left: 0;
+    }
+    .hero-section {
+        padding: 40px 15px;
+    }
+    .hero-image {
+        width: 200px;
+        height: 200px;
+    }
+    .hero-text h1 {
+        font-size: 2em;
+    }
+    .hero-text p {
+        font-size: 1.1em;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .btn {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .refined-portal-card {
+        padding: 30px;
+    }
+    .refined-portal-card h2 {
+        font-size: 1.8em;
+    }
+    .footer .page-footer-grid {
+        flex-direction: column;
+        text-align: center;
+    }
+    .page-footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    .page-footer-links a {
+        margin-right: 0;
+    }
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 24px;
+    }
+}
+
+/* Estilos de reveal e tilt-ready (mantidos do seu CSS original) */
+.reveal {
+  opacity: 0;
+  transform: translateY(34px) scale(.985);
+  filter: blur(10px);
+  transition: opacity .8s cubic-bezier(.22, 1, .36, 1), transform .8s cubic-bezier(.22, 1, .36, 1), filter .8s cubic-bezier(.22, 1, .36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+.tilt-ready {
+  will-change: transform, box-shadow;
+  transform-style: preserve-3d;
+}
+
+.tilt-ready .serif,
+.tilt-ready h2,
+.tilt-ready h3,
+.tilt-ready p,
+.tilt-ready .btn,
+.tilt-ready .label,
+.tilt-ready .page-kicker,
+.tilt-ready .mini-kicker {
+  transform: translateZ(18px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
+
+/* Estilos de elementos que foram removidos ou substituídos */
+/* .home-page .home-note, .minimal-home-hero, .home-minimal-shell, .home-minimal-copy, .home-main-cta, .home-signature-panel, .signature-line, .signature-divider, .signature-grid, .portal-kicker, .portal-link, .page-hero, .page-hero-grid, .page-hero-copy, .page-hero-visual, .page-hero-panel, .page-hero-grid-2, .page-hero-grid-3, .page-hero-grid-4, .page-hero-grid-5, .page-hero-grid-6, .page-hero-grid-7, .page-hero-grid-8, .page-hero-grid-9, .page-hero-grid-10, .page-hero-grid-11, .page-hero-grid-12, .page-hero-grid-13, .page-hero-grid-14, .page-hero-grid-15, .page-hero-grid-16, .page-hero-grid-17, .page-hero-grid-18, .page-hero-grid-19, .page-hero-grid-20, .page-hero-grid-21, .page-hero-grid-22, .page-hero-grid-23, .page-hero-grid-24, .page-hero-grid-25, .page-hero-grid-26, .page-hero-grid-27, .page-hero-grid-28, .page-hero-grid-29, .page-hero-grid-30, .page-hero-grid-31, .page-hero-grid-32, .page-hero-grid-33, .page-hero-grid-34, .page-hero-grid-35, .page-hero-grid-36, .page-hero-grid-37, .page-hero-grid-38, .page-hero-grid-39, .page-hero-grid-40, .page-hero-grid-41, .page-hero-grid-42, .page-hero-grid-43, .page-hero-grid-44, .page-hero-grid-45, .page-hero-grid-46, .page-hero-grid-47, .page-hero-grid-48, .page-hero-grid-49, .page-hero-grid-50, .page-hero-grid-51, .page-hero-grid-52, .page-hero-grid-53, .page-hero-grid-54, .page-hero-grid-55, .page-hero-grid-56, .page-hero-grid-57, .page-hero-grid-58, .page-hero-grid-59, .page-hero-grid-60, .page-hero-grid-61, .page-hero-grid-62, .page-hero-grid-63, .page-hero-grid-64, .page-hero-grid-65, .page-hero-grid-66, .page-hero-grid-67, .page-hero-grid-68, .page-hero-grid-69, .page-hero-grid-70, .page-hero-grid-71, .page-hero-grid-72, .page-hero-grid-73, .page-hero-grid-74, .page-hero-grid-75, .page-hero-grid-76, .page-hero-grid-77, .page-hero-grid-78, .page-hero-grid-79, .page-hero-grid-80, .page-hero-grid-81, .page-hero-grid-82, .page-hero-grid-83, .page-hero-grid-84, .page-hero-grid-85, .page-hero-grid-86, .page-hero-grid-87, .page-hero-grid-88, .page-hero-grid-89, .page-hero-grid-90, .page-hero-grid-91, .page-hero-grid-92, .page-hero-grid-93, .page-hero-grid-94, .page-hero-grid-95, .page-hero-grid-96, .page-hero-grid-97, .page-hero-grid-98, .page-hero-grid-99, .page-hero-grid-100 */
