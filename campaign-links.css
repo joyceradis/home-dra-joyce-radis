@@ -1,0 +1,20 @@
+
+/* Complemento editorial: campanhas e formulários digitais da área clínica. */
+.clinical-forms{padding-top:35px;padding-bottom:46px;background:#f7f3f0}
+.clinical-forms .cf-header{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:23px}
+.clinical-forms .cf-eyebrow{display:block;font:700 10px/1.6 Inter,'DM Sans',sans-serif;letter-spacing:2px;text-transform:uppercase;color:#976f7a}
+.clinical-forms h2{font:500 clamp(30px,4vw,42px)/1.15 'Cormorant Garamond',Georgia,serif;color:#382833;margin:7px 0 5px}
+.clinical-forms .cf-header p{font:400 13px/1.7 Inter,sans-serif;color:#75686c;max-width:440px;margin:0}
+.clinical-forms .cf-grid{display:grid;grid-template-columns:1fr 1fr;gap:19px}
+.clinical-forms .cf-card{display:flex;flex-direction:column;min-height:205px;justify-content:space-between;gap:18px;padding:26px;background:#fff;border:1px solid #e5d9d5;text-decoration:none;transition:border-color .2s,box-shadow .2s}
+.clinical-forms .cf-card:hover{border-color:#b98d9c;box-shadow:0 12px 35px #34212b16}
+.clinical-forms .cf-card-feature{background:#3b2833;color:white;border-color:#3b2833}
+.clinical-forms .cf-card-feature:hover{border-color:#cda9b4}
+.clinical-forms .cf-card .cf-index{font:700 10px Inter,sans-serif;letter-spacing:1.8px;color:#ad788b}
+.clinical-forms .cf-card h3{font:500 31px 'Cormorant Garamond',Georgia,serif;line-height:1.1;margin:11px 0;color:#382833}
+.clinical-forms .cf-card-feature h3{color:#fff}
+.clinical-forms .cf-card p{font:400 12px/1.7 Inter,sans-serif;color:#756b70;margin:0;max-width:420px}
+.clinical-forms .cf-card-feature p{color:#d9cbd0}
+.clinical-forms .cf-card .cf-action{font:700 10px Inter,sans-serif;letter-spacing:1px;color:#593e4b;text-transform:uppercase}
+.clinical-forms .cf-card-feature .cf-action{color:#f4d4dd}
+@media(max-width:670px){.clinical-forms .cf-header{display:block}.clinical-forms .cf-grid{grid-template-columns:1fr}.clinical-forms .cf-card{min-height:155px;padding:22px}.clinical-forms{padding:34px 0}}
