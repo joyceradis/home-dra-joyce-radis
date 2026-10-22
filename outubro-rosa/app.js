@@ -141,7 +141,7 @@
     }
     return true;
   }
-  function goTo(index) {
+  function goTo(index, shouldScroll = true) {
     current = index;
     clearError();
     steps.forEach((step, i) => { step.hidden = i !== index; });
@@ -154,7 +154,7 @@
     $('prevBtn').hidden = index === 0;
     $('nextBtn').hidden = index === 2;
     $('finishBtn').hidden = index !== 2;
-    document.querySelector('.form-top').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+    if (shouldScroll) document.querySelector('.form-top').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
   }
   $('nextBtn').addEventListener('click', () => { if (validate(current)) goTo(Math.min(2, current + 1)); });
   $('prevBtn').addEventListener('click', () => goTo(Math.max(0, current - 1)));
@@ -171,8 +171,8 @@
       cidade: trimmed('cidade'), uf: trimmed('uf').toUpperCase(),
       sintomas: selected('sintomas')[0], sinais: selected('sinais').join(', ') || 'Não especificados',
       pessoal: selected('pessoal')[0], familia: selected('familia')[0],
-      parentes: selected('parentes').join(', ') || 'Não especificados',
-      familiaTipo: trimmed('familiaTipo') || 'Não informado',
+      parentes: selected('familia')[0] === 'Sim' ? (selected('parentes').join(', ') || 'Não especificados') : 'Não se aplica',
+      familiaTipo: selected('familia')[0] === 'Sim' ? (trimmed('familiaTipo') || 'Não informado') : 'Não se aplica',
       genetica: selected('genetica')[0], gestacao: selected('gestacao')[0],
       mamografia: $('mamografia').value, citopatologico: $('citopatologico').value,
       exames: selected('exames'), modalidade: 'Particular'
@@ -324,5 +324,5 @@
     $('activeForm').hidden = false;
     goTo(2);
   });
-  goTo(0);
+  goTo(0, false);
 })();
