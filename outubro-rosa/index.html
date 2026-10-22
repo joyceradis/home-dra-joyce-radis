@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#32242b"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer">
+<meta name="description" content="Formulário individual de pré-avaliação para orientação médica no Outubro Rosa, com PDF privado para enviar à Dra. Joyce Radis.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://joyceradis.github.io; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src https://viacep.com.br; img-src 'self' data:; form-action 'none'; object-src 'none'; base-uri 'none'; frame-src 'none'">
+<title>Outubro Rosa · Formulário Médico | Dra. Joyce Radis</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css?v=4">
+<script defer src="https://joyceradis.github.io/saude-viagem-foz/assets/vendor/jspdf.umd.min.js"></script>
+<script defer src="app.js?v=4"></script>
+</head>
+<body>
+<a class="skip" href="#formArea">Ir para o formulário</a>
+<header class="header">
+ <nav class="head-inner" aria-label="Navegação principal">
+  <a class="signature" href="/" aria-label="Site da Dra. Joyce Radis"><span class="mark">JR<span class="dot">.</span></span><span class="sig-text"><strong>Dra. Joyce Radis</strong><small>Médica · CRM-ES 21188</small></span></a>
+  <div class="head-links"><a href="/" class="hide-sm">Início</a><a href="/pacientes.html" class="hide-sm">Pacientes</a><a href="https://joyceradis.github.io/saude-viagem-foz/" class="hide-sm">Saúde pré-viagem</a><a class="head-contact" href="https://wa.me/5527998134032" target="_blank" rel="noopener noreferrer">Contato <span aria-hidden="true">↗</span></a></div>
+ </nav>
+</header>
+<main class="page" id="formArea">
+ <div class="campaign-line"><span>SAÚDE DA MULHER</span><span>OUTUBRO ROSA · 2026</span></div>
+ <section class="mast" aria-labelledby="mainTitle">
+  <div><p class="kicker">Dra. Joyce Radis <span class="sep">/</span> Atendimento individual</p><h1 id="mainTitle">Outubro <em>Rosa.</em></h1><p class="intro">Um cuidado que começa com a sua história.</p></div>
+  <p class="mast-aside">Preencha sua ficha com tranquilidade. Ao final, você receberá um PDF para compartilhar diretamente com a médica — sem cadastro em plataformas externas.</p>
+ </section>
+ <div class="content-grid">
+  <section class="form-wrap" aria-label="Ficha de pré-avaliação">
+   <div id="activeForm">
+    <div class="form-top"><div><span class="form-overline">FICHA CONFIDENCIAL</span><h2>Informações para avaliação médica</h2><p>Os dados permitem compreender suas necessidades antes de qualquer solicitação de exames.</p></div><span class="form-id">JR / 01</span></div>
+    <ol class="progress" aria-label="Etapas do formulário">
+     <li class="active" data-indicator="0"><span>01</span><b>Identificação</b></li>
+     <li data-indicator="1"><span>02</span><b>Saúde</b></li>
+     <li data-indicator="2"><span>03</span><b>Finalizar</b></li>
+    </ol>
+    <div id="errorBox" role="alert" class="error-box" hidden></div>
+    <form id="patientForm" novalidate autocomplete="on">
+     <section class="form-step" data-step="0" aria-labelledby="title0">
+      <div class="section-heading"><span>01 / 03</span><h3 id="title0">Dados pessoais e endereço</h3></div>
+      <div class="field"><label for="nome">Nome completo <i>*</i></label><input id="nome" name="nome" type="text" autocomplete="name" maxlength="120" placeholder="Conforme documento de identificação" required></div>
+      <div class="two">
+       <div class="field"><label for="cpf">CPF <i>*</i></label><input id="cpf" name="cpf" type="text" inputmode="numeric" autocomplete="off" placeholder="000.000.000-00" maxlength="14" required></div>
+       <div class="field"><label for="nascimento">Data de nascimento <i>*</i></label><input id="nascimento" name="nascimento" type="date" autocomplete="bday" required></div>
+      </div>
+      <div class="two">
+       <div class="field"><label for="telefone">WhatsApp com DDD <i>*</i></label><input id="telefone" name="telefone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(27) 99999-9999" maxlength="20" required></div>
+       <div class="field"><label for="email">E-mail <span class="optional">opcional</span></label><input id="email" name="email" type="email" autocomplete="email" placeholder="nome@exemplo.com" maxlength="120"></div>
+      </div>
+      <div class="field cep-field"><label for="cep">CEP <i>*</i></label><div class="cep-row"><input id="cep" name="cep" type="text" inputmode="numeric" autocomplete="postal-code" placeholder="00000-000" maxlength="9" required><button id="cepLookup" class="lookup" type="button">Buscar endereço <span aria-hidden="true">↗</span></button></div><small id="cepStatus" class="small-msg" role="status" aria-live="polite">Preenchimento automático por CEP. Revise o resultado.</small></div>
+      <div class="field"><label for="logradouro">Rua / avenida <i>*</i></label><input id="logradouro" name="logradouro" autocomplete="address-line1" placeholder="Preenchimento automático ou manual" maxlength="120" required></div>
+      <div class="two">
+       <div class="field"><label for="numero">Número <i>*</i></label><input id="numero" name="numero" autocomplete="off" placeholder="Nº ou s/n" maxlength="20" required></div>
+       <div class="field"><label for="complemento">Complemento <span class="optional">opcional</span></label><input id="complemento" name="complemento" autocomplete="address-line2" placeholder="Casa, apto, bloco..." maxlength="90"></div>
+      </div>
+      <div class="field"><label for="bairro">Bairro <i>*</i></label><input id="bairro" name="bairro" maxlength="80" required></div>
+      <div class="two two-city">
+       <div class="field"><label for="cidade">Cidade <i>*</i></label><input id="cidade" name="cidade" autocomplete="address-level2" maxlength="80" required></div>
+       <div class="field"><label for="uf">UF <i>*</i></label><input id="uf" name="uf" autocomplete="address-level1" placeholder="ES" minlength="2" maxlength="2" required></div>
+      </div>
+     </section>
+     <section class="form-step" data-step="1" aria-labelledby="title1" hidden>
+      <div class="section-heading"><span>02 / 03</span><h3 id="title1">Histórico de saúde</h3></div>
+      <p class="section-help">Estas perguntas ajudam a diferenciar rastreamento de investigação de sintomas. Responda conforme souber.</p>
+      <fieldset class="field"><legend>Apresenta alguma alteração nas mamas atualmente? <i>*</i></legend><div class="choices">
+       <label><input type="radio" name="sintomas" value="Não" required> Não</label>
+       <label><input type="radio" name="sintomas" value="Sim" required> Sim</label>
+       <label><input type="radio" name="sintomas" value="Prefiro conversar" required> Prefiro conversar</label>
+      </div><div class="conditional" id="symptomBox" hidden><p class="attention">A presença de sintomas pode exigir avaliação clínica prioritária. Este formulário não substitui atendimento e não deve atrasar a investigação.</p><label class="sub-label">Qual alteração? <span class="optional">se desejar informar</span></label><div class="checks">
+       <label><input type="checkbox" name="sinais" value="Nódulo ou caroço"> Nódulo ou caroço</label>
+       <label><input type="checkbox" name="sinais" value="Secreção pelo mamilo"> Secreção pelo mamilo</label>
+       <label><input type="checkbox" name="sinais" value="Alteração de pele ou mamilo"> Alteração de pele ou mamilo</label>
+       <label><input type="checkbox" name="sinais" value="Dor ou outro sintoma"> Dor ou outro sintoma</label>
+      </div></div></fieldset>
+      <fieldset class="field"><legend>Histórico pessoal de câncer de mama ou ovário? <i>*</i></legend><div class="choices">
+       <label><input type="radio" name="pessoal" value="Não" required> Não</label><label><input type="radio" name="pessoal" value="Sim" required> Sim</label><label><input type="radio" name="pessoal" value="Não sei" required> Não sei</label>
+      </div></fieldset>
+      <fieldset class="field"><legend>Algum familiar de primeiro grau teve câncer de mama ou ovário? <i>*</i></legend><p class="field-note">Primeiro grau: mãe, irmã, filha ou pai.</p><div class="choices">
+       <label><input type="radio" name="familia" value="Não" required> Não</label><label><input type="radio" name="familia" value="Sim" required> Sim</label><label><input type="radio" name="familia" value="Não sei" required> Não sei</label>
+      </div><div class="conditional" id="familyBox" hidden><p class="sub-label">Quem foi diagnosticado?</p><div class="checks">
+       <label><input type="checkbox" name="parentes" value="Mãe"> Mãe</label><label><input type="checkbox" name="parentes" value="Irmã"> Irmã</label><label><input type="checkbox" name="parentes" value="Filha"> Filha</label><label><input type="checkbox" name="parentes" value="Pai"> Pai</label>
+      </div><div class="field inline-field"><label for="familiaTipo">Tipo de câncer e idade ao diagnóstico <span class="optional">se souber</span></label><input id="familiaTipo" type="text" maxlength="160" placeholder="Ex.: mãe, mama, aos 44 anos"></div></div></fieldset>
+      <fieldset class="field"><legend>Há mutação genética hereditária de risco conhecida na família? <i>*</i></legend><div class="choices"><label><input type="radio" name="genetica" value="Não" required> Não</label><label><input type="radio" name="genetica" value="Sim" required> Sim</label><label><input type="radio" name="genetica" value="Não sei" required> Não sei</label></div></fieldset>
+      <fieldset class="field"><legend>Está grávida ou amamentando atualmente? <i>*</i></legend><div class="choices"><label><input type="radio" name="gestacao" value="Não" required> Não</label><label><input type="radio" name="gestacao" value="Sim" required> Sim</label><label><input type="radio" name="gestacao" value="Não se aplica / prefiro conversar" required> Não se aplica / prefiro conversar</label></div></fieldset>
+      <div class="two"><div class="field"><label for="mamografia">Última mamografia</label><select id="mamografia"><option value="Não sei / não me recordo">Não sei / não me recordo</option><option value="Nunca">Nunca</option><option value="Há menos de 1 ano">Há menos de 1 ano</option><option value="Há 1 a 2 anos">Há 1 a 2 anos</option><option value="Há mais de 2 anos">Há mais de 2 anos</option></select></div><div class="field"><label for="citopatologico">Último preventivo ginecológico</label><select id="citopatologico"><option value="Não sei / não me recordo">Não sei / não me recordo</option><option value="Nunca">Nunca</option><option value="Há menos de 1 ano">Há menos de 1 ano</option><option value="Há 1 a 3 anos">Há 1 a 3 anos</option><option value="Há mais de 3 anos">Há mais de 3 anos</option></select></div></div>
+     </section>
+     <section class="form-step" data-step="2" aria-labelledby="title2" hidden>
+      <div class="section-heading"><span>03 / 03</span><h3 id="title2">Sua solicitação</h3></div>
+      <fieldset class="field"><legend>Qual orientação você procura? <i>*</i></legend><div class="checks tall">
+       <label><input type="checkbox" name="exames" value="Mamografia"> Avaliação para mamografia</label>
+       <label><input type="checkbox" name="exames" value="Ultrassonografia mamária"> Avaliação para ultrassonografia mamária</label>
+       <label><input type="checkbox" name="exames" value="Exames ginecológicos de rotina"> Exames ginecológicos de rotina</label>
+       <label><input type="checkbox" name="exames" value="Orientação individual sobre quais exames são indicados"> Não sei quais exames são indicados para mim</label>
+      </div><p class="field-note">Marcar um exame não significa que ele será solicitado. A indicação depende de avaliação médica.</p></fieldset>
+      <div class="finance-panel"><span class="section-mini">MODALIDADE DE ATENDIMENTO</span><h4>Como deseja ser atendida?</h4><div class="care-cards">
+       <label class="care-choice selected"><input type="radio" name="modalidade" value="Particular" checked> <span class="radio-visual" aria-hidden="true"></span><span><strong>Particular</strong><small>Modalidade disponível</small></span><span class="available">DISPONÍVEL</span></label>
+       <div class="care-choice unavailable" aria-disabled="true"><span class="radio-visual" aria-hidden="true"></span><span><strong>Convênio médico</strong><small>Bradesco, Unimed e outros</small></span><span class="unavailable-label">INDISPONÍVEL</span></div>
+      </div><p class="field-note">Não há credenciamento a operadoras de saúde para este atendimento. A modalidade particular não garante cobertura ou reembolso pelo plano.</p></div>
+      <label class="consent"><input id="aceite" type="checkbox" required><span>Confirmo que as informações são verdadeiras e que desejo gerar uma ficha para minha avaliação individual. Li a <a href="#privacidade" id="privacyLink">política de privacidade</a>. <i>*</i></span></label>
+      <p class="sensitive-note"><strong>Privacidade.</strong> As informações permanecem neste dispositivo durante o preenchimento. Nenhum dado clínico ou documento é enviado automaticamente a servidores. A ficha será compartilhada apenas se você decidir enviá-la.</p>
+     </section>
+     <div class="nav-actions"><button type="button" class="secondary-btn" id="prevBtn" hidden>← Voltar</button><button type="button" class="primary-btn" id="nextBtn">Continuar <span aria-hidden="true">→</span></button><button type="submit" class="primary-btn" id="finishBtn" hidden>Gerar minha ficha em PDF <span aria-hidden="true">↗</span></button></div>
+     <p class="secure-note"><span aria-hidden="true">◇</span> Preenchimento individual · Seus dados não são publicados</p>
+    </form>
+   </div>
+   <section id="resultPanel" class="result" hidden tabindex="-1" aria-labelledby="successTitle">
+    <div class="result-emblem" aria-hidden="true">JR</div>
+    <span class="form-overline">DOCUMENTO PREPARADO</span><h2 id="successTitle">Sua ficha está pronta.</h2>
+    <p>Seu PDF reúne as informações necessárias para a análise inicial. <strong>Ele não é um pedido médico.</strong> Compartilhe-o diretamente com a Dra. Joyce.</p>
+    <button type="button" class="primary-btn" id="shareBtn">Compartilhar PDF <span aria-hidden="true">↗</span></button>
+    <button type="button" class="secondary-btn big" id="downloadBtn">Baixar PDF</button>
+    <p class="result-help">No iPhone, escolha WhatsApp na folha de compartilhamento e selecione a conversa com a médica. Se preferir, baixe o arquivo e anexe-o manualmente.</p>
+    <a class="contact-link" href="https://wa.me/5527998134032?text=Ol%C3%A1%2C%20Dra.%20Joyce.%20Conclu%C3%AD%20a%20ficha%20do%20Outubro%20Rosa%20e%20vou%20enviar%20o%20PDF%20nesta%20conversa." target="_blank" rel="noopener noreferrer">Abrir conversa no WhatsApp ↗</a>
+    <button type="button" class="text-btn" id="editBtn">Revisar minhas respostas</button>
+   </section>
+  </section>
+  <aside class="right-rail" aria-label="Informações sobre a campanha">
+   <div class="rail-card"><div class="vertical-marker">OUTUBRO ROSA</div><span class="rail-index">01 / CUIDADO</span><h2>A história importa<br><em>mais que o exame.</em></h2><p>Idade, antecedentes pessoais e familiares, sintomas e exames anteriores orientam a decisão clínica. Nenhum pedido é emitido de forma automática.</p><div class="rule"></div><div class="rail-note"><span>ETAPA FINAL</span><strong>PDF preparado no seu dispositivo.</strong><small>Envie em conversa privada para análise médica individual.</small></div></div>
+   <div class="rail-secondary"><span>ACESSO DIRETO</span><a href="https://joyceradis.github.io/saude-viagem-foz/" target="_blank" rel="noopener noreferrer">Formulário de saúde pré-viagem <span aria-hidden="true">↗</span></a><p>Outro serviço digital de preenchimento e envio individual de PDF.</p></div>
+  </aside>
+ </div>
+ <section class="closing"><span class="closing-mark">JR.</span><div><p>UMA ABORDAGEM INTEGRADA DO CUIDADO</p><h2>Medicina com atenção ao que é individual.</h2></div></section>
+</main>
+<footer class="footer"><div class="footer-inner"><div class="footer-brand"><strong>Dra. Joyce Radis de Souza de Oliveira</strong><span>MÉDICA · CRM-ES 21188 · ESPÍRITO SANTO</span></div><div class="footer-links"><a href="/">Página principal</a><a href="/pacientes.html">Pacientes</a><a href="https://joyceradis.github.io/saude-viagem-foz/">Saúde pré-viagem</a><a href="mailto:contato@drajoyceradis.com">Contato</a></div><p>Este formulário é informativo e destina-se à coleta de dados para avaliação médica. Não substitui consulta, não é solicitação de exame e não atende urgências.</p></div></footer>
+<dialog id="privacyDialog" class="privacy" aria-labelledby="privacyHeading"><button type="button" id="closePrivacy" class="dialog-close" aria-label="Fechar">×</button><span class="form-overline">TRANSPARÊNCIA</span><h2 id="privacyHeading">Suas informações.</h2><p>A responsável pelo tratamento após o compartilhamento é a Dra. Joyce Radis de Souza de Oliveira, CRM-ES 21188, contato@drajoyceradis.com. O formulário prepara o documento PDF exclusivamente no seu dispositivo; não transmite CPF, informações médicas ou endereço para o GitHub nem armazena respostas em servidor próprio.</p><p>Para preencher o endereço, somente o CEP informado é consultado no serviço ViaCEP, sujeito à política desse serviço. A biblioteca de PDF é carregada do projeto público de saúde pré-viagem da médica, sem enviar a ela suas respostas.</p><p>Quando você compartilhar voluntariamente o PDF, o arquivo passará a ser tratado pelo aplicativo escolhido, como WhatsApp, segundo os termos e configurações desse aplicativo. A finalidade é permitir avaliação individual e contato profissional. Para correção, acesso ou eliminação dos dados compartilhados, quando legalmente cabível, escreva para o contato indicado.</p><p>Não divulgue a ficha em grupos; encaminhe-a em conversa individual.</p></dialog>
+</body></html>
